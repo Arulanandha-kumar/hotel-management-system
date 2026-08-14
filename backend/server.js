@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch(err => console.log(err));
 const PORT = process.env.PORT || 3000;
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
     const frontendpath = path.join(__dirname, "..", "frontend", "dist");
 
