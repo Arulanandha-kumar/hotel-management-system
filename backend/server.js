@@ -1,4 +1,4 @@
-import path from 'path'
+const path = require("path");
 const express = require("express");
 const cors = require('cors');
 // const jwt = require('jsonwebtoken');
@@ -34,13 +34,14 @@ mongoose.connect(process.env.MONGO_URI)
 const PORT = process.env.PORT || 3000;
 
 const __dirname = path.resolve();
-if(process.env.NODE_ENV === "production") {
-    const frontendpath = path.join(__dirname, "..","frontend","dist")
+if (process.env.NODE_ENV === "production") {
+    const frontendpath = path.join(__dirname, "..", "frontend", "dist");
 
-    app.use(express.static(frontendpath))
-    app.use("*", (req, res)=> {
-        res.sendFile(path.join(frontendpath, "index.html"))
-    })
+    app.use(express.static(frontendpath));
+
+    app.use((req, res) => {
+        res.sendFile(path.join(frontendpath, "index.html"));
+    });
 }
 app.get("/", (req, res) => {
     res.send("hello world")
