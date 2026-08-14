@@ -46,4 +46,4 @@ app.get("/", (req, res) => {
     res.send("hello world")
 })
 
-app.listen(PORT, "0.0.0.0", ()=> console.log("Server running successfully....")) 
+app.listen(PORT, "0.0.0.0", ()=> console.log("Server running successfully.....")) 
