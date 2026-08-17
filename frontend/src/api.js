@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API = axios.create({
   //baseURL: "http://localhost:3000/api", // change if needed 
-  baseURL: "https://hotel-management-system-0rbr.onrender.com/api"
+  baseURL: "https://hotel-management-system.onrender.com/api"
 });
 
 // Attach token automatically
