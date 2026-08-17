@@ -12,7 +12,16 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: [
+    "https://hotel-management-system-0rbr.onrender.com",
+    // "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // const secretKey = "abcdef";
