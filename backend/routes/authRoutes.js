@@ -76,6 +76,19 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
+ 
+    // Fail loudly (in logs) if the server is misconfigured, instead of
+    // letting jwt.sign throw later and mask the real cause.
+
+    if (!process.env.JWT_SECRET) {
+      console.error("Login error: JWT_SECRET is not set in environment variables");
+      return res.status(500).json({ message: "Server misconfiguration: missing JWT secret" });
+    }
+
+
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: 'User not found' });
 
